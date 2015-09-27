@@ -24,3 +24,9 @@ uint8_t fat_initvolume32(FAT32_MBR* mbr)
         return 0;
     }
 }
+
+//Find and return the offset to the root directory
+uint32_t fat_rootdir(FAT32_MBR* mbr)
+{
+    return ((mbr->fat_bps * mbr->fat_rsvdsectscnt) + ((mbr->fat_bps * mbr->fat_fatsz32) * mbr->fat_numfats));
+}

@@ -58,14 +58,16 @@ struct fentry
 {
     char        fat_fname[11]; //Our 8.3 short file name
     uint8_t     fat_fattrib;    //File attributes
-    uint8_t     fat_resvd[10];  //Reserved..
-    uint16_t    fat_ctime;  //File creation time
-    uint16_t    fat_cdate;   //File creation date
-    uint16_t    fat_laccess;
-    uint16_t    fat_clusthi; //High 16-bits of cluster number
-    uint32_t    UNUSED; //Unused for us
-    uint16_t    fat_clustlo; //Low 16-bits of cluster
-    uint32_t    fat_fsize;
+    uint8_t     fat_ntres; //Windows NT reserved. Set to 0 when file is created
+    uint8_t     fat_cttenth;
+    uint16_t    fat_ctime; //Creation time
+    uint16_t    fat_cdate; //Creation date
+    uint16_t    fat_lsaccess; //Last Access Date
+    uint16_t    fat_clushi; //High byte of the cluster this file starts at!
+    uint16_t    fat_wtime; //Last write time
+    uint16_t    fat_wdate; //Last write date
+    uint16_t    fat_cluslo; //Low byte of cluster this file starts at!
+    uint32_t    fat_fsize; //File size in bytes
 }__attribute((packed));
 
 

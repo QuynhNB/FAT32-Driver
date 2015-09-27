@@ -2,8 +2,11 @@ FAT32 Sector Math!
 
 FirstDataSector = fat_rsvdsectscnt + (fat_numfats * fat_fatsz32) + first_data
 OR
-First Cluster Sector = ((N - 2) * fat_spc) + FirstDataSector
-Root Directory location = (fat_bps * fat_resvdsectscnt) + ((fat_bps * fat_fatsz32) * fat_numfats)
+Root Directory = (fat_bps * fat_resvdsectscnt) + ((fat_bps * fat_fatsz32) * fat_numfats)
+
+First Cluster Sector = ((N - 2) * (fat_spc * fat_bpb)) + FirstDataSector
+
+NOTE: FirstDataSector is actually the root directory! Thanks for making that BLATANTLY obvious, Microsoft :)
 
 
 
